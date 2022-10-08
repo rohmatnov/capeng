@@ -115,10 +115,7 @@ function CostCreate() {
           }
         )
         .then((res: any) => {
-          navigation("/client/cost", {
-            replace: true,
-            state: { success: true },
-          });
+          close();
           setRefresh(true);
         })
         .catch((err) => {
