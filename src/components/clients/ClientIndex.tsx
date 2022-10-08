@@ -67,8 +67,8 @@ function ClientIndex() {
     <Error {...error} />
   ) : (
     <div className="max-w-5xl mx-auto">
-      <div className="bg-rose-500 border-rose-600 shadow dark:bg-stone-800/50 border dark:border-stone-800 p-6 rounded-lg mb-4">
-        <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+      <div className="bg-rose-500 border-rose-600 shadow dark:bg-stone-800/50 border dark:border-stone-800 p-6 rounded-lg mb-4 text-white">
+        <div className="text-sm text-gray-100 dark:text-gray-400 mb-1">
           Bulan Ini
         </div>
         <div className="text-2xl">Rp{amount}</div>
