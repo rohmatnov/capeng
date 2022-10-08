@@ -7,9 +7,15 @@ interface Dashboard {
   children: JSX.Element;
   user: User | null;
   title?: string;
+  back?: string;
 }
 
-function DashboardLayout({ children, user, title }: Dashboard): JSX.Element {
+function DashboardLayout({
+  children,
+  user,
+  title,
+  back,
+}: Dashboard): JSX.Element {
   const auth = useAuth();
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
@@ -69,7 +75,24 @@ function DashboardLayout({ children, user, title }: Dashboard): JSX.Element {
       <main className="flex-1">
         <nav className="flex justify-between items-center py-3 px-4 lg:px-6">
           <div>
-            <h1 className="font-semibold text-lg">{title}</h1>
+            <h1 className="font-semibold text-lg">
+              {back && (
+                <Link to={back}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    className="bi bi-arrow-left inline-block border dark:border-stone-800 h-8 w-8 p-1.5 mr-3 rounded-md dark:hover:bg-stone-800"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                    />
+                  </svg>
+                </Link>
+              )}
+              {title}
+            </h1>
           </div>
           <div>
             <div className="text-sm relative" ref={dropdownRef}>

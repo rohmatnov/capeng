@@ -25,6 +25,7 @@ type InfoContext = {
   token: string | null;
   title: string | undefined;
   setTitle: Dispatch<SetStateAction<string | undefined>>;
+  setBack: Dispatch<SetStateAction<string | undefined>>;
 };
 export function useInfo(): InfoContext {
   return useOutletContext<InfoContext>();
@@ -38,6 +39,7 @@ function Authenticated(): JSX.Element {
   const [error, setError] = useState<ErrorPage>({});
   const [user, setUser] = useState<User | null>(null);
   const [title, setTitle] = useState<string | undefined>();
+  const [back, setBack] = useState<string | undefined>();
   const URL = "https://openidconnect.googleapis.com/v1/userinfo";
 
   useEffect(() => {
@@ -75,8 +77,10 @@ function Authenticated(): JSX.Element {
   }, [location.pathname]);
 
   return access_token ? (
-    <DashboardLayout user={user} title={title}>
-      <Outlet context={{ user, token: access_token, title, setTitle }} />
+    <DashboardLayout user={user} title={title} back={back}>
+      <Outlet
+        context={{ user, token: access_token, title, setTitle, setBack }}
+      />
     </DashboardLayout>
   ) : (
     <Error {...error} />

@@ -7,7 +7,7 @@ import Error, { ErrorPage } from "../../Error";
 import { useInfo } from "../../guards/Authenticated";
 
 function CostIndex() {
-  const { token, setTitle } = useInfo();
+  const { token, setTitle, setBack } = useInfo();
   const auth = useAuth();
   const [error, setError] = useState<ErrorPage>();
   const URL = `${import.meta.env.VITE_URL}/values/${
@@ -45,6 +45,7 @@ function CostIndex() {
   useEffect(() => {
     let didCancel = false;
     setTitle("Biaya");
+    setBack("/client");
 
     if (token) {
       sheetApi();

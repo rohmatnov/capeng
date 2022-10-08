@@ -7,7 +7,7 @@ import Error, { ErrorPage } from "../Error";
 import { useInfo } from "../guards/Authenticated";
 
 function ClientIndex() {
-  const { token, setTitle } = useInfo();
+  const { token, setTitle, setBack } = useInfo();
   const startDate = moment().startOf("month");
   const endDate = moment();
   const URL = `${import.meta.env.VITE_URL}/values/${
@@ -59,6 +59,7 @@ function ClientIndex() {
   };
   useEffect(() => {
     setTitle("Dashboard");
+    setBack(undefined);
     sheetApi();
   }, []);
 
